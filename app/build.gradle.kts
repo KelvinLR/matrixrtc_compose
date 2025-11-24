@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.matrixrtc_compose_app"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.matrixrtc_compose_app"
