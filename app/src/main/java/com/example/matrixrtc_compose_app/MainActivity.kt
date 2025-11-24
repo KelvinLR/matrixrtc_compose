@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.matrixrtc_compose_app.ui.screens.HomeScreen
+import com.example.matrixrtc_compose_app.ui.screens.VideoChat
 import com.example.matrixrtc_compose_app.ui.theme.Matrixrtc_compose_appTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Matrixrtc_compose_appTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(modifier = Modifier.padding(innerPadding))
+                    VideoChat(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

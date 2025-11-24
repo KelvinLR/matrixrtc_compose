@@ -8,6 +8,7 @@ espressoCore = "3.7.0"
 lifecycle-runtime-ktx = "2.8.4"
 activity-compose = "1.9.0"
 compose-bom = "2024.04.01"
+material-icons-extended = "1.6.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
