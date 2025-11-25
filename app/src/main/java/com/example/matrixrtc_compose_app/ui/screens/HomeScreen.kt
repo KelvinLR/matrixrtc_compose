@@ -10,10 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 
 
 @Composable
-fun HomeScreen (modifier: Modifier = Modifier) {
+fun HomeScreen (nav: NavController) {
     var enabled by remember { mutableStateOf(true) }
     Column (
         modifier = Modifier.fillMaxSize(),
@@ -23,6 +24,8 @@ fun HomeScreen (modifier: Modifier = Modifier) {
             enabled = enabled,
             onClick = {
                 enabled = !enabled
+                // chamando rota pra tela seguinte
+                nav.navigate("video")
             }
         ) {
             Text(

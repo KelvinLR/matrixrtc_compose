@@ -18,9 +18,10 @@ import androidx.compose.material3.*
 import androidx.compose.material3.IconButton
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavController
 
 @Composable
-fun VideoChat(modifier: Modifier) {
+fun VideoChat(nav: NavController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Bottom
@@ -47,7 +48,10 @@ fun VideoChat(modifier: Modifier) {
             ) {
                 IconButton(modifier = Modifier
                     .background(color = Color.Red, CircleShape)
-                    .clip(CircleShape), onClick = {}) {
+                    .clip(CircleShape), onClick = {
+                        // voltando pra tela anterior dando pop na pilha do navigator
+                        nav.popBackStack()
+                }) {
                     Icon(
                         imageVector = Icons.Filled.Call,
                         tint = Color.White,
