@@ -25,6 +25,18 @@ fun VideoChat(modifier: Modifier) {
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Bottom
     ){
+        Text(
+            "Peer 2 Camera",
+            modifier = Modifier.align(Alignment.CenterHorizontally))
+        Box (
+            modifier = Modifier
+                .padding(12.dp)
+                .background(Color.Gray)
+                .size(width = 120.dp, height = 160.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text("Peer 1 Camera")
+        }
         Box (modifier = Modifier.background(Color.Gray)) {
             Row(
                 modifier = Modifier
@@ -40,6 +52,15 @@ fun VideoChat(modifier: Modifier) {
                         imageVector = Icons.Filled.Call,
                         tint = Color.White,
                         contentDescription = "Desligar"
+                    )
+                }
+                IconButton(modifier = Modifier
+                    .background(MaterialTheme.colorScheme.primary, CircleShape)
+                    .clip(CircleShape), onClick = {}) {
+                    Icon(
+                        imageVector = Icons.Filled.VideocamOff,
+                        tint = Color.White,
+                        contentDescription = "Desligar vídeo"
                     )
                 }
                 IconButton(modifier = Modifier
