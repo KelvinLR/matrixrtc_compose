@@ -58,4 +58,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("androidx.camera:camera-camera2:1.3.4")
+    implementation("androidx.camera:camera-lifecycle:1.3.4")
+    implementation("androidx.camera:camera-view:1.3.1")
+    implementation("androidx.activity:activity-compose:1.9.2")
+    implementation("com.google.accompanist:accompanist-permissions:0.35.0-alpha")
 }
