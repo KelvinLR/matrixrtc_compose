@@ -1,5 +1,6 @@
 package com.example.matrixrtc_compose_app
 
+import WebRtcManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,6 +24,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        WebRtcManager(this).testWebRtc()
+
         setContent {
             Matrixrtc_compose_appTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
