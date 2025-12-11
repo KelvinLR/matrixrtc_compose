@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+
 android {
     namespace = "com.example.matrixrtc_compose_app"
     compileSdk = 36
@@ -51,7 +52,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation("androidx.navigation:navigation-compose:2.8.0")
     implementation("androidx.compose.material:material-icons-extended")
-    implementation("com.infobip:google-webrtc:1.0.0035529")
+    implementation("io.getstream:stream-webrtc-android:1.3.9")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
