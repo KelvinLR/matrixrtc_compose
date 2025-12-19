@@ -11,6 +11,7 @@ import org.webrtc.SessionDescription
 import org.webrtc.SdpObserver
 import org.webrtc.AudioSource
 import org.webrtc.AudioTrack
+import org.webrtc.DataChannel
 import org.webrtc.SurfaceTextureHelper
 import org.webrtc.EglBase
 import org.webrtc.DefaultVideoDecoderFactory
@@ -67,7 +68,7 @@ class WebRtcManager(private val context: Context) {
     fun createPeerConnection() {
         Log.i("RTC", "Observer class = " + org.webrtc.PeerConnection.Observer::class.java.protectionDomain.codeSource.location)
 
-        /*peerConnection = factory.createPeerConnection(rtcConfig, object : org.webrtc.PeerConnection.Observer {
+        peerConnection = factory.createPeerConnection(rtcConfig, object : org.webrtc.PeerConnection.Observer {
             override fun onSignalingChange(newState: PeerConnection.SignalingState) {
                 Log.i("RTC", "Signaling: $newState")
             }
@@ -80,9 +81,29 @@ class WebRtcManager(private val context: Context) {
                 Log.i("RTC", "ConnectionState: $newState")
             }
 
+            override fun onIceConnectionReceivingChange(p0: Boolean) {
+                TODO("Not yet implemented")
+            }
+
             override fun onIceCandidate(candidate: IceCandidate) {
                 Log.i("RTC", "ICE: $candidate")
                 onLocalIceCandidate?.invoke(candidate)
+            }
+
+            override fun onIceCandidatesRemoved(p0: Array<out IceCandidate>?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onAddStream(p0: MediaStream?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onRemoveStream(p0: MediaStream?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onDataChannel(p0: DataChannel?) {
+                TODO("Not yet implemented")
             }
 
             override fun onIceGatheringChange(state: PeerConnection.IceGatheringState) {
@@ -96,12 +117,9 @@ class WebRtcManager(private val context: Context) {
             override fun onAddTrack(receiver: RtpReceiver?, streams: Array<out MediaStream>?) {}
         })
 
-        Log.i("RTC", "PeerConnection criada: $peerConnection")*/
+        Log.i("RTC", "PeerConnection criada: $peerConnection")
     }
 
-    // ---------------------------------------------------------------------------------------------
-    // MEDIA TRACKS
-    // ---------------------------------------------------------------------------------------------
     fun addDummyAudioTrack() {
         val audioSource = factory.createAudioSource(MediaConstraints())
         val audioTrack = factory.createAudioTrack("AUDIO", audioSource)
@@ -110,9 +128,6 @@ class WebRtcManager(private val context: Context) {
         Log.i("RTC", "Dummy audio track adicionada")
     }
 
-    // ---------------------------------------------------------------------------------------------
-    // OFFER
-    // ---------------------------------------------------------------------------------------------
     fun createOffer() {
         val constraints = MediaConstraints().apply {
             mandatory.add(MediaConstraints.KeyValuePair("OfferToReceiveAudio", "true"))
@@ -147,9 +162,6 @@ class WebRtcManager(private val context: Context) {
         }, constraints)
     }
 
-    // ---------------------------------------------------------------------------------------------
-    // ANSWER
-    // ---------------------------------------------------------------------------------------------
     fun createAnswer() {
         val constraints = MediaConstraints()
 
@@ -181,9 +193,6 @@ class WebRtcManager(private val context: Context) {
         }, constraints)
     }
 
-    // ---------------------------------------------------------------------------------------------
-    // REMOTE DESCRIPTION
-    // ---------------------------------------------------------------------------------------------
     fun setRemoteDescription(
         type: String,
         sdp: String,
@@ -221,9 +230,6 @@ class WebRtcManager(private val context: Context) {
         }, description)
     }
 
-    // ---------------------------------------------------------------------------------------------
-    // ICE CANDIDATES (com buffer)
-    // ---------------------------------------------------------------------------------------------
     fun addIceCandidate(sdpMid: String?, sdpMLineIndex: Int, candidate: String) {
         val ice = IceCandidate(sdpMid, sdpMLineIndex, candidate)
 

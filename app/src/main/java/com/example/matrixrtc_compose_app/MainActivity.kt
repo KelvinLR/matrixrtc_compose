@@ -29,8 +29,8 @@ class MainActivity : ComponentActivity() {
 
         // --- TESTE WEBRTC LOOPBACK ---
         val rtc = WebRtcManager(this)
-        rtc.createPeerConnection()
-        rtc.addDummyAudioTrack()
+        //rtc.createPeerConnection()
+        //rtc.addDummyAudioTrack()
         loopbackTest(rtc)
 
         setContent {
